@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Our 2nd Proposal Anniversary 💗</title>
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #74334f;
+
+    min-height: 100vh;
+
+    /* =========================
+       FULL BACKGROUND
+       NO STRETCHING
+       MOVES WITH PAGE
+    ========================= */
+
+    background-color: #fcecf2;
+
+    background-image: url("./bg.jpeg");
+
+    /* Keeps original aspect ratio */
+    background-size: cover;
+
+    /* Keeps image centered */
+    background-position: center top;
+
+    background-repeat: no-repeat;
+
+    /* Background moves with scrolling */
+    background-attachment: scroll;
+}
+
+
+/* =========================
+   OPENING MESSAGE
+========================= */
+
+#messageScreen {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    padding: 25px 20px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #ffe8f0 0%,
+            #fac4d7 50%,
+            #efa2bd 100%
+        );
+
+    transition:
+        opacity 1.5s ease,
+        visibility 1.5s ease;
+}
+
+#messageScreen.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.message-container {
+    width: min(850px, 94%);
+    font-family: Georgia, serif;
+    color: #74334f;
+    font-size: clamp(18px, 2.8vw, 28px);
+    line-height: 1.7;
+}
+
+.message-line {
+    opacity: 0;
+    transform: translateY(20px);
+    margin-bottom: 14px;
+
+    transition:
+        opacity 1.8s ease,
+        transform 1.8s ease;
+}
+
+.message-line.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.message-love {
+    color: #b83268;
+    font-weight: bold;
+    font-size: clamp(20px, 3.2vw, 32px);
+}
+
+
+/* =========================
+   ENVELOPE SCREEN
+========================= */
+
+#envelopeScreen {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-image: url("./bg.jpeg");
+
+    /* No stretching */
+    background-size: cover;
+
+    background-position: center;
+    background-repeat: no-repeat;
+
+    opacity: 0;
+
+    transition: opacity 1.5s ease;
+
+    padding: 20px;
+}
+
+#envelopeScreen.show {
+    display: flex;
+    opacity: 1;
+}
+
+.open-title {
+    font-family: Georgia, serif;
+    color: #a53664;
+
+    font-size: clamp(27px, 5vw, 45px);
+
+    text-align: center;
+
+    padding: 0 20px;
+    margin-bottom: 25px;
+}
+
+
+/* =========================
+   ENVELOPE IMAGE
+========================= */
+
+.photo-envelope {
+    position: relative;
+
+    width: min(600px, 90vw);
+
+    cursor: pointer;
+
+    opacity: 0;
+
+    animation:
+        envelopeAppear
+        1.5s
+        ease
+        forwards;
+
+    animation-delay: 0.8s;
+
+    filter:
+        drop-shadow(
+            0 15px 25px
+            rgba(80, 30, 60, 0.25)
+        );
+
+    transition:
+        transform 0.35s ease,
+        filter 0.35s ease;
+}
+
+@keyframes envelopeAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(25px)
+            scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+.photo-envelope:hover {
+    transform: scale(1.025);
+
+    filter:
+        drop-shadow(
+            0 18px 30px
+            rgba(80, 30, 60, 0.30)
+        );
+}
+
+.photo-envelope img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    border-radius: 10px;
+}
+
+
+/* =========================
+   HEART
+========================= */
+
+.click-heart {
+    position: absolute;
+
+    left: 50%;
+    top: 58%;
+
+    transform:
+        translate(-50%, -50%);
+
+    width: 62px;
+    height: 62px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(211, 75, 124, 0.92);
+
+    color: white;
+
+    font-size: 28px;
+
+    box-shadow:
+        0 6px 18px
+        rgba(80, 30, 60, 0.3);
+
+    animation:
+        heartbeat
+        1.3s
+        infinite;
+
+    z-index: 5;
+}
+
+@keyframes heartbeat {
+
+    50% {
+        transform:
+            translate(-50%, -50%)
+            scale(1.1);
+    }
+}
+
+
+/* =========================
+   ENVELOPE OPEN
+========================= */
+
+.photo-envelope.open {
+    animation:
+        envelopeClicked
+        1.4s
+        ease
+        forwards;
+}
+
+@keyframes envelopeClicked {
+
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    30% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(-20px)
+            scale(0.96);
+
+        opacity: 0;
+    }
+}
+
+.photo-envelope.open .click-heart {
+    animation: none;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1.2);
+}
+
+
+/* =========================
+   ENVELOPE SUBTITLE
+========================= */
+
+.open-subtitle {
+    margin-top: 25px;
+
+    font-family: Georgia, serif;
+
+    color: #a53664;
+
+    font-size: 18px;
+
+    text-align: center;
+
+    animation:
+        subtitlePulse
+        2s
+        ease-in-out
+        infinite;
+}
+
+@keyframes subtitlePulse {
+
+    50% {
+        opacity: 0.55;
+    }
+}
+
+
+/* =========================
+   HELLO KITTY RAIN
+========================= */
+
+.kitty-rain {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+    overflow: hidden;
+
+    z-index: 20000;
+}
+
+.kitty {
+    position: absolute;
+
+    top: -100px;
+
+    width: 55px;
+    height: 55px;
+
+    object-fit: contain;
+
+    pointer-events: none;
+
+    animation:
+        kittyFall
+        linear
+        forwards;
+
+    will-change:
+        transform,
+        opacity;
+}
+
+@keyframes kittyFall {
+
+    0% {
+        transform:
+            translateY(-120px)
+            rotate(0deg)
+            scale(var(--kitty-scale));
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(110vh)
+            rotate(var(--kitty-rotate))
+            scale(var(--kitty-scale));
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+#main {
+    display: none;
+    width: 100%;
+}
+
+
+/* =========================
+   COMMON BOX
+========================= */
+
+.card,
+.paper {
+    width: min(820px, 94%);
+
+    margin-left: auto;
+    margin-right: auto;
+
+    background:
+        rgba(255, 255, 255, 0.93);
+
+    border:
+        2px solid
+        rgba(213, 78, 130, 0.16);
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 10px 30px
+        rgba(80, 30, 60, 0.16);
+
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 50vh;
+
+    padding:
+        22px
+        20px
+        6px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    min-height: 310px;
+
+    padding: 32px 30px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+.card h1 {
+    font-family: Georgia, serif;
+
+    color: #a53664;
+
+    font-size:
+        clamp(34px, 5.5vw, 58px);
+
+    line-height: 1.1;
+}
+
+.card h1 span {
+    color: #d94e82;
+}
+
+.card p {
+    margin-top: 16px;
+
+    font-family: Georgia, serif;
+
+    font-size: 17px;
+
+    line-height: 1.65;
+
+    color: #805269;
+
+    max-width: 680px;
+}
+
+
+/* =========================
+   CONTENT
+========================= */
+
+section.content {
+    width: 100%;
+
+    margin: 0;
+
+    /* SMALL SPACE BETWEEN FEATURES */
+    padding:
+        6px
+        20px;
+}
+
+.paper {
+    min-height: 310px;
+
+    padding: 30px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+
+/* =========================
+   TITLES
+========================= */
+
+.title {
+    text-align: center;
+
+    font-family: Georgia, serif;
+
+    color: #a53664;
+
+    font-size:
+        clamp(30px, 5vw, 46px);
+
+    line-height: 1.15;
+
+    margin-bottom: 8px;
+}
+
+.text {
+    text-align: center;
+
+    font-size: 16px;
+
+    line-height: 1.6;
+
+    color: #805269;
+}
+
+
+/* =========================
+   ANNIVERSARY
+========================= */
+
+.anniversary {
+    margin:
+        14px auto 0;
+
+    width: 100%;
+
+    max-width: 680px;
+
+    text-align: center;
+
+    padding: 17px;
+
+    border:
+        2px dashed
+        #dc91ab;
+
+    border-radius: 18px;
+
+    background: #fff5f8;
+}
+
+.number {
+    font-family: Georgia, serif;
+
+    font-size: 55px;
+
+    color: #c74376;
+}
+
+.anniversary h3 {
+    font-family: Georgia, serif;
+
+    color: #a53664;
+
+    font-size: 24px;
+}
+
+.anniversary p {
+    margin-top: 5px;
+    color: #805269;
+}
+
+
+/* =========================
+   PHOTO
+========================= */
+
+.photos {
+    margin:
+        14px auto 0;
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.photo {
+    width: min(650px, 100%);
+
+    padding:
+        8px
+        8px
+        17px;
+
+    background: white;
+
+    box-shadow:
+        0 8px 25px
+        rgba(70, 20, 50, 0.18);
+
+    transform: rotate(-1deg);
+
+    overflow: visible;
+}
+
+.photo img {
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+
+    max-width: 100%;
+
+    object-fit: contain;
+
+    object-position: center;
+
+    border-radius: 2px;
+}
+
+.caption {
+    text-align: center;
+
+    margin-top: 9px;
+
+    color: #a94369;
+
+    font-family: Georgia, serif;
+
+    font-size: 16px;
+}
+
+
+/* =========================
+   LOVE LETTER
+========================= */
+
+.love-letter {
+    position: relative;
+
+    width: 100%;
+
+    max-width: 680px;
+
+    margin:
+        14px auto 0;
+
+    padding: 22px;
+
+    padding-bottom: 95px;
+
+    background: #fffafa;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 7px 22px
+        rgba(70, 20, 50, 0.12);
+
+    font-family: Georgia, serif;
+
+    font-size: 16px;
+
+    line-height: 1.65;
+
+    overflow: hidden;
+}
+
+.love-letter p {
+    margin-bottom: 12px;
+}
+
+.signature {
+    text-align: right;
+
+    color: #c54275;
+
+    font-size: 21px;
+}
+
+
+/* =========================
+   HELLO KITTY IN LOVE LETTER
+========================= */
+
+.letter-kitty {
+    position: absolute;
+
+    right: 12px;
+    bottom: 8px;
+
+    width: 85px;
+    height: 85px;
+
+    object-fit: contain;
+
+    opacity: 0.95;
+
+    pointer-events: none;
+
+    z-index: 2;
+}
+
+
+/* =========================
+   MUSIC
+========================= */
+
+.music {
+    position: fixed;
+
+    right: 20px;
+    bottom: 20px;
+
+    width: 58px;
+    height: 58px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #d45183;
+
+    color: white;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    z-index: 500;
+
+    box-shadow:
+        0 8px 20px
+        rgba(80, 30, 60, 0.22);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    body {
+        /* SAME PROPORTION — NO STRETCHING */
+        background-size: cover;
+
+        background-position:
+            center top;
+
+        background-repeat: no-repeat;
+
+        /* MOVES WITH PAGE */
+        background-attachment: scroll;
+    }
+
+    .message-container {
+        font-size: 18px;
+        line-height: 1.6;
+    }
+
+    .message-line {
+        margin-bottom: 11px;
+    }
+
+    .hero {
+        min-height: 45vh;
+
+        padding:
+            16px
+            10px
+            5px;
+    }
+
+    section.content {
+        /* REDUCED GAP */
+        padding:
+            5px
+            10px;
+    }
+
+    .card,
+    .paper {
+        width: 94%;
+
+        min-height: 285px;
+
+        padding:
+            24px
+            18px;
+    }
+
+    .card h1 {
+        font-size: 35px;
+    }
+
+    .title {
+        font-size: 31px;
+    }
+
+    .number {
+        font-size: 50px;
+    }
+
+    .photo {
+        width: 100%;
+
+        padding:
+            7px
+            7px
+            15px;
+    }
+
+    .photo img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .love-letter {
+        padding: 19px;
+        padding-bottom: 78px;
+        font-size: 15px;
+    }
+
+    .photo-envelope {
+        width: 94vw;
+        max-width: 600px;
+    }
+
+    .click-heart {
+        width: 52px;
+        height: 52px;
+        font-size: 24px;
+    }
+
+    .open-subtitle {
+        font-size: 16px;
+        margin-top: 20px;
+    }
+
+    .kitty {
+        width: 42px;
+        height: 42px;
+    }
+
+    .letter-kitty {
+        width: 65px;
+        height: 65px;
+
+        right: 8px;
+        bottom: 6px;
+    }
+}
+
+
+/* =========================
+   SMALL PHONE
+========================= */
+
+@media (max-width: 420px) {
+
+    .card,
+    .paper {
+        min-height: 275px;
+
+        padding:
+            22px
+            15px;
+    }
+
+    .card h1 {
+        font-size: 31px;
+    }
+
+    .title {
+        font-size: 28px;
+    }
+
+    .love-letter {
+        font-size: 14.5px;
+        padding-bottom: 75px;
+    }
+
+    .open-title {
+        font-size: 27px;
+        margin-bottom: 18px;
+    }
+
+    .photo-envelope {
+        width: 95vw;
+    }
+
+    .click-heart {
+        width: 48px;
+        height: 48px;
+        font-size: 22px;
+    }
+
+    .letter-kitty {
+        width: 60px;
+        height: 60px;
+
+        right: 6px;
+        bottom: 5px;
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     MUSIC
+========================= -->
+
+<audio id="song" loop autoplay>
+
+    <source
+        src="./song.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+
+<!-- =========================
+     OPENING MESSAGE
+========================= -->
+
+<div id="messageScreen">
+
+    <div class="message-container">
+
+        <p class="message-line">
+            2 years since I asked you to be mine,
+            and 2 years of us being together. ❤️
+        </p>
+
+        <p class="message-line">
+            Two years of memories, laughter,
+            little moments, and growing together.
+        </p>
+
+        <p class="message-line">
+            You cheer so loud that I didn’t even
+            notice who didn’t. 🥹❤️
+        </p>
+
+        <p class="message-line message-love">
+            I’d choose you all over again.
+            I love you so much, my love. 😘🫂💞
+        </p>
+
+        <p class="message-line message-love">
+            Happy 2nd Proposal Anniversary to us.
+            🫶🏻✨
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     ENVELOPE SCREEN
+========================= -->
+
+<div id="envelopeScreen">
+
+    <div class="open-title">
+        A little surprise for you... 💗
+    </div>
+
+    <div
+        class="photo-envelope"
+        id="envelope"
+        onclick="openEnvelope()">
+
+        <img
+            src="./image2.png"
+            alt="A little anniversary envelope">
+
+        <div class="click-heart">
+            💗
+        </div>
+
+    </div>
+
+    <div class="open-subtitle">
+        ✨ Click the envelope ✨
+    </div>
+
+</div>
+
+
+<!-- =========================
+     HELLO KITTY RAIN
+========================= -->
+
+<div
+    class="kitty-rain"
+    id="kittyRain">
+</div>
+
+
+<!-- =========================
+     MAIN WEBSITE
+========================= -->
+
+<div id="main">
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="card">
+
+            <h1>
+                Happy
+                <span>2nd</span>
+                Proposal Anniversary 💗
+            </h1>
+
+            <p>
+                Two years ago, one little question
+                started a beautiful chapter of our story.
+
+                <br><br>
+
+                And today, I wanted to make
+                that memory special again.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- TWO YEARS -->
+
+    <section class="content">
+
+        <div class="paper">
+
+            <h2 class="title">
+                Two Years of Us 🌸
+            </h2>
+
+            <p class="text">
+                Two years of memories,
+                smiles, conversations
+                and beautiful little moments.
+            </p>
+
+            <div class="anniversary">
+
+                <div class="number">
+                    02
+                </div>
+
+                <h3>
+                    YEARS
+                </h3>
+
+                <p>
+                    Since that special question 💌
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PHOTO -->
+
+    <section class="content">
+
+        <div class="paper">
+
+            <h2 class="title">
+                Our Memory 📸
+            </h2>
+
+            <p class="text">
+                One special memory that means
+                a lot to me.
+            </p>
+
+            <div class="photos">
+
+                <div class="photo">
+
+                    <img
+                        src="./photo.jpeg"
+                        alt="Our beautiful memory">
+
+                    <div class="caption">
+                        Our beautiful memory 💗
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- LOVE LETTER -->
+
+    <section class="content">
+
+        <div class="paper">
+
+            <h2 class="title">
+                A Letter For You 💌
+            </h2>
+
+            <div class="love-letter">
+
+                <img
+                    src="./kitty.png"
+                    alt="Hello Kitty"
+                    class="letter-kitty">
+
+                <p>
+                    Two years ago, a simple question
+                    became one of the most memorable
+                    moments of our story.
+                </p>
+
+                <p>
+                    Since then, so many little moments
+                    have become memories that I will
+                    always treasure.
+                </p>
+
+                <p>
+                    The laughs, the conversations,
+                    the random little things and
+                    all those moments that only we
+                    understand...
+                </p>
+
+                <p>
+                    Today isn't just about two years.
+
+                    <br><br>
+
+                    It's about remembering the beautiful
+                    moment where this chapter began.
+                </p>
+
+                <p>
+                    Happy 2nd Proposal Anniversary.
+                    I love you so much, my love. 😘🫂💞💗
+                    <br>
+                    FOREVER 2081-05-05
+                </p>
+
+                <div class="signature">
+                    With love,<br>
+                    Anush (Timro Bacchaa Forever)😽🌷
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+</div>
+
+
+<!-- =========================
+     MUSIC BUTTON
+========================= -->
+
+<button
+    class="music"
+    id="musicButton"
+    onclick="toggleMusic()">
+
+    🎵
+
+</button>
+
+
+<script>
+
+/* =========================
+   MUSIC
+========================= */
+
+const song =
+    document.getElementById("song");
+
+const musicButton =
+    document.getElementById("musicButton");
+
+song.volume = 0.7;
+
+
+function startMusic() {
+
+    song.play()
+        .then(function() {
+
+            musicButton.innerHTML = "⏸️";
+
+        })
+        .catch(function() {
+
+            console.log(
+                "Browser blocked autoplay."
+            );
+
+        });
+
+}
+
+
+startMusic();
+
+
+document.addEventListener(
+    "click",
+    function() {
+
+        startMusic();
+
+    },
+    {
+        once: true
+    }
+);
+
+
+/* =========================
+   OPENING MESSAGE
+========================= */
+
+const messageScreen =
+    document.getElementById("messageScreen");
+
+const messageLines =
+    document.querySelectorAll(".message-line");
+
+const envelopeScreen =
+    document.getElementById("envelopeScreen");
+
+
+let messageDelay = 1000;
+
+
+messageLines.forEach(function(line) {
+
+    setTimeout(function() {
+
+        line.classList.add("show");
+
+    }, messageDelay);
+
+    messageDelay += 2300;
+
+});
+
+
+const totalMessageTime =
+    messageDelay + 1800;
+
+
+setTimeout(function() {
+
+    messageScreen.classList.add("hide");
+
+    setTimeout(function() {
+
+        envelopeScreen.classList.add("show");
+
+    }, 1200);
+
+}, totalMessageTime);
+
+
+/* =========================
+   HELLO KITTY RAIN
+========================= */
+
+function startKittyRain() {
+
+    const rain =
+        document.getElementById("kittyRain");
+
+    const numberOfKitties = 55;
+
+
+    for (
+        let i = 0;
+        i < numberOfKitties;
+        i++
+    ) {
+
+        const kitty =
+            document.createElement("img");
+
+
+        kitty.src =
+            "./kitty.png";
+
+
+        kitty.className =
+            "kitty";
+
+
+        kitty.style.left =
+            Math.random() * 100 + "vw";
+
+
+        kitty.style.animationDuration =
+            (3 + Math.random() * 4) + "s";
+
+
+        kitty.style.animationDelay =
+            Math.random() * 1.5 + "s";
+
+
+        kitty.style.setProperty(
+            "--kitty-scale",
+            0.55 + Math.random() * 0.7
+        );
+
+
+        kitty.style.setProperty(
+            "--kitty-rotate",
+            (-360 + Math.random() * 720) + "deg"
+        );
+
+
+        rain.appendChild(kitty);
+
+
+        setTimeout(function() {
+
+            kitty.remove();
+
+        }, 8000);
+
+    }
+
+}
+
+
+/* =========================
+   OPEN ENVELOPE
+========================= */
+
+function openEnvelope() {
+
+    if (
+        document
+            .getElementById("envelope")
+            .classList
+            .contains("open")
+    ) {
+        return;
+    }
+
+
+    startMusic();
+
+    startKittyRain();
+
+
+    const envelope =
+        document.getElementById("envelope");
+
+    const screen =
+        document.getElementById("envelopeScreen");
+
+    const main =
+        document.getElementById("main");
+
+
+    envelope.classList.add("open");
+
+
+    setTimeout(function() {
+
+        screen.style.opacity = "0";
+
+
+        setTimeout(function() {
+
+            screen.style.display = "none";
+
+            main.style.display = "block";
+
+            window.scrollTo(
+                0,
+                0
+            );
+
+        }, 1000);
+
+    }, 1200);
+
+}
+
+
+/* =========================
+   MUSIC BUTTON
+========================= */
+
+function toggleMusic() {
+
+    if (song.paused) {
+
+        song.play()
+            .then(function() {
+
+                musicButton.innerHTML = "⏸️";
+
+            });
+
+    } else {
+
+        song.pause();
+
+        musicButton.innerHTML = "🎵";
+
+    }
+
+}
+
+</script>
+
+
+</body>
+
+</html>
